@@ -1,0 +1,444 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #60A5FA;
+  --secondary: #7C3AED;
+  --background: #0A0E2A;
+  --text: #E2E8F0;
+}
+
+body {
+  @apply bg-gradient-to-b from-[#0A0E2A] to-[#1E3A8A] text-gray-200 min-h-screen;
+  font-family: 'SF Pro Display', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light theme overrides */
+body.light-mode {
+  @apply bg-gradient-to-b from-gray-100 to-gray-200 text-gray-800;
+}
+
+body.light-mode .holo-bg {
+  @apply bg-white bg-opacity-90;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .neon-glow {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+/* Button styles */
+.btn {
+  @apply px-4 py-2 rounded-lg transition-all duration-300;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.btn-secondary {
+  @apply bg-purple-600 text-white hover:bg-purple-700;
+}
+
+/* Hamburger menu styles */
+.hamburger {
+  @apply relative w-6 h-6 cursor-pointer;
+}
+
+.hamburger-line {
+  @apply absolute w-6 h-0.5 bg-white transition-all duration-300;
+  transform-origin: center;
+}
+
+.hamburger-line:nth-child(1) {
+  @apply top-1;
+}
+
+.hamburger-line:nth-child(2) {
+  @apply top-3;
+}
+
+.hamburger-line:nth-child(3) {
+  @apply top-5;
+}
+
+/* Hamburger menu animation */
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+  @apply fixed top-16 left-0 w-full bg-gray-900 bg-opacity-95 backdrop-blur-lg transform transition-transform duration-300 ease-in-out;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mobile-menu.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Product card styles */
+.product-card {
+  @apply relative overflow-hidden rounded-lg transition-all duration-300;
+  transform: perspective(1000px) rotateX(0) rotateY(0);
+}
+
+.product-card:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+/* Settings toggle styles */
+.settings-toggle {
+  @apply relative inline-block w-12 h-6;
+}
+
+.settings-toggle input {
+  @apply opacity-0 w-0 h-0;
+}
+
+.settings-toggle-slider {
+  @apply absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-gray-600 rounded-full transition-all duration-300;
+}
+
+.settings-toggle-slider:before {
+  @apply absolute content-[''] h-5 w-5 left-0.5 bottom-0.5 bg-white rounded-full transition-all duration-300;
+}
+
+input:checked + .settings-toggle-slider {
+  @apply bg-blue-500;
+}
+
+input:checked + .settings-toggle-slider:before {
+  transform: translateX(24px);
+}
+
+/* Location-based pricing styles */
+.location-price {
+  @apply text-sm text-gray-400;
+}
+
+.location-price.active {
+  @apply text-blue-400 font-medium;
+}
+
+/* Navigation active state */
+.nav-link.active {
+  @apply text-blue-400 font-medium;
+}
+
+/* User dropdown styles */
+.user-dropdown {
+  @apply absolute right-0 mt-0 w-48 bg-gray-800 rounded-b-lg shadow-lg transform transition-all duration-200;
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.user-dropdown.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Admin dashboard styles */
+.dashboard-tab {
+  @apply relative transition-all duration-200;
+}
+
+.dashboard-tab.active::after {
+  content: '';
+  @apply absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600;
+}
+
+/* Light theme overrides */
+.light-theme {
+  --background: #ffffff;
+  --text: #1f2937;
+  @apply bg-white text-gray-900;
+}
+
+.light-theme .bg-gray-800 {
+  @apply bg-gray-100;
+}
+
+.light-theme .text-gray-300 {
+  @apply text-gray-700;
+}
+
+.light-theme .text-gray-400 {
+  @apply text-gray-600;
+}
+
+.light-theme .hover\:text-white:hover {
+  @apply hover:text-gray-900;
+}
+
+.light-theme .bg-gray-700 {
+  @apply bg-gray-200;
+}
+
+.light-theme .border-gray-600 {
+  @apply border-gray-300;
+}
+
+/* Product card styles */
+.product-card img {
+  @apply w-full h-48 object-cover;
+}
+
+.product-card-content {
+  @apply p-4;
+}
+
+.product-card-title {
+  @apply text-lg font-semibold mb-2;
+}
+
+.product-card-price {
+  @apply text-blue-400 font-bold;
+}
+
+/* Form styles */
+.form-input {
+  @apply w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-300 mb-1;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Holographic effects */
+.holo-bg {
+  @apply bg-opacity-80 backdrop-blur-lg;
+  background: rgba(10, 14, 23, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 100, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+.holo-text {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Neon glow effect */
+.neon-glow {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.neon-glow:hover {
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+}
+
+/* Button styles */
+.btn {
+  @apply px-4 py-2 rounded-full transition-all duration-300;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border-radius: 9999px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  width: 24px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) { top: 0px; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+
+.hamburger.open span:nth-child(1) {
+  top: 9px;
+  transform: rotate(135deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.hamburger.open span:nth-child(3) {
+  top: 9px;
+  transform: rotate(-135deg);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  @apply fixed inset-0 bg-gray-900 bg-opacity-95 z-40 transform transition-transform duration-300;
+  top: 64px;
+}
+
+.mobile-menu.hidden {
+  transform: translateX(100%);
+}
+
+.product-option {
+  @apply px-3 py-1 rounded-full cursor-pointer transition-all duration-200;
+}
+
+.product-option.selected {
+  @apply bg-primary text-white;
+}
+
+/* Settings toggle */
+.settings-toggle {
+  @apply relative inline-block w-12 h-6;
+}
+
+.settings-toggle input {
+  @apply opacity-0 w-0 h-0;
+}
+
+.settings-toggle-slider {
+  @apply absolute cursor-pointer inset-0 bg-gray-700 rounded-full transition-all duration-300;
+}
+
+.settings-toggle-slider:before {
+  content: '';
+  @apply absolute h-4 w-4 left-1 bottom-1 bg-white rounded-full transition-all duration-300;
+}
+
+.settings-toggle input:checked + .settings-toggle-slider {
+  @apply bg-primary;
+}
+
+.settings-toggle input:checked + .settings-toggle-slider:before {
+  transform: translateX(24px);
+}
+
+/* Rainbow border effect */
+.rainbow-border {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.rainbow-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    #ff0000, #ff7f00, #ffff00, 
+    #00ff00, #0000ff, #4b0082, #8b00ff
+  );
+  background-size: 400%;
+  z-index: -1;
+  animation: rainbow 20s linear infinite;
+  border-radius: 0.75rem;
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Light theme rainbow border */
+body.light-theme .rainbow-border::before {
+  opacity: 0.7;
+}
